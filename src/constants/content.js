@@ -52,14 +52,37 @@ export const PHOTOS = [
   },
 ];
 
-export const GROUP_PHOTO = {
-  id: 6,
-  url: `${import.meta.env.BASE_URL}vyshu/vyshu-6.png`,
-  title: "The Core Memory",
-  subtitle: "Thumbs up, big smiles, and real friendship vibes 🤙",
-  badge: "VIP Friendship Snapshot",
-  aspect: "16/9",
-};
+export const FRIENDSHIP_SNAPSHOTS = [
+  {
+    id: 6,
+    url: `${import.meta.env.BASE_URL}vyshu/vyshu-6.png`,
+    title: "The Core Memory",
+    subtitle: "Thumbs up, big smiles, and real friendship vibes 🤙",
+    badge: "VIP Friendship Snapshot",
+    aspect: "16/9",
+    tag: "Squad Selfie",
+  },
+  {
+    id: 7,
+    url: `${import.meta.env.BASE_URL}vyshu/vyshu-7.jpg`,
+    title: "Sunny Days & Bright Smiles",
+    subtitle: "Casual walks, green outdoors, and effortless laughs 🌿",
+    badge: "VIP Friendship Snapshot",
+    aspect: "16/10",
+    tag: "Park Days",
+  },
+  {
+    id: 8,
+    url: `${import.meta.env.BASE_URL}vyshu/vyshu-8.png`,
+    title: "Adiyogi Expedition",
+    subtitle: "Trip to Adiyogi with the squad — unforgettable memories ⛰️",
+    badge: "VIP Friendship Snapshot",
+    aspect: "9/16",
+    tag: "Adiyogi Trip",
+  },
+];
+
+export const GROUP_PHOTO = FRIENDSHIP_SNAPSHOTS[0];
 
 export const FRIENDSHIP_HIGHLIGHTS = [
   {
@@ -73,18 +96,6 @@ export const FRIENDSHIP_HIGHLIGHTS = [
     description: "Successfully tolerating my constant random thoughts, silly banter, and annoying jokes for another entire year without filing a complaint.",
     stat: "Level 999",
     statLabel: "Endurance Rating",
-  },
-  {
-    title: "Top-Tier Photogenic Energy 📸",
-    description: "Whether it is lush botanical gardens, misty hilltops, or candid selfies, making every frame look effortlessly serene and lively.",
-    stat: "10 / 10",
-    statLabel: "Aesthetic Score",
-  },
-  {
-    title: "Real & Genuine Vibes ✨",
-    description: "No drama, no pretense — just pure good company, supportive listening, and lots of laughs whenever we talk.",
-    stat: "Priceless",
-    statLabel: "Friendship Value",
   },
 ];
 

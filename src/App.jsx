@@ -15,7 +15,9 @@ import {
   Volume2, 
   VolumeX,
   Compass,
-  CheckCircle2
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 import { 
@@ -24,6 +26,7 @@ import {
   SIGN_OFF, 
   PHOTOS, 
   GROUP_PHOTO, 
+  FRIENDSHIP_SNAPSHOTS,
   FRIENDSHIP_HIGHLIGHTS, 
   BIRTHDAY_WISH 
 } from './constants/content';
@@ -270,56 +273,56 @@ const LoadingScreen = ({ onComplete }) => {
 // =========================================================================
 const Hero3D = ({ onScrollToWish, onScrollToGallery }) => {
   const { scrollYProgress } = useScroll();
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const yParallax = useTransform(scrollYProgress, [0, 0.35], [0, 40]);
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-botanical-100/60 via-warm-cream to-white">
+    <section className="relative min-h-[80vh] sm:min-h-[90vh] flex flex-col items-center justify-center pt-8 pb-10 sm:py-16 px-4 overflow-hidden bg-gradient-to-b from-botanical-100/60 via-warm-cream to-white">
       {/* Subtle Botanical Ambient Glows */}
-      <div className="absolute top-12 left-10 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-16 right-10 w-96 h-96 bg-amber-100/60 rounded-full blur-3xl pointer-events-none animate-pulse-slow" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-12 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-16 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-amber-100/60 rounded-full blur-3xl pointer-events-none animate-pulse-slow" style={{ animationDelay: '2s' }} />
 
       <motion.div
         style={{ y: yParallax }}
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, type: 'spring', bounce: 0.3 }}
-        className="relative z-10 max-w-4xl mx-auto text-center py-16 px-6 md:px-14 rounded-[3rem] bg-white/60 backdrop-blur-xl border border-white/90 shadow-3d-soft"
+        transition={{ duration: 0.9, type: 'spring', bounce: 0.3 }}
+        className="relative z-10 w-full max-w-4xl mx-auto text-center py-8 sm:py-14 px-4 sm:px-8 md:px-14 rounded-3xl sm:rounded-[3rem] bg-white/60 backdrop-blur-xl border border-white/90 shadow-3d-soft"
       >
         {/* Floating VIP Nickname Pill */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70 shadow-sm mb-6"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/70 shadow-sm mb-4 sm:mb-6"
         >
-          <Award size={16} className="text-amber-500" />
-          <span className="text-xs md:text-sm font-semibold tracking-wider uppercase">
+          <Award size={14} className="text-amber-500 sm:w-4 sm:h-4" />
+          <span className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase">
             Official Birthday Edition: <span className="text-emerald-700 font-bold underline decoration-amber-400 decoration-2">{PET_NAME}</span>
           </span>
-          <Sparkles size={16} className="text-amber-500" />
+          <Sparkles size={14} className="text-amber-500 sm:w-4 sm:h-4" />
         </motion.div>
 
         {/* Main Title */}
-        <h1 className="text-6xl sm:text-7xl md:text-9xl font-cursive font-bold text-slate-800 leading-tight drop-shadow-sm">
+        <h1 className="text-5xl sm:text-7xl md:text-9xl font-cursive font-bold text-slate-800 leading-[1.1] sm:leading-tight drop-shadow-sm">
           Happy Birthday, <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-600 animate-gradient-x">
             {FRIEND_NAME}!
           </span>
         </h1>
 
-        <p className="mt-6 text-lg sm:text-2xl text-slate-600 font-sans font-light max-w-2xl mx-auto leading-relaxed">
-          To my favorite travel-loving, laugh-sharing, awesome friend — today is all about celebrating you! 🌿✨
+        <p className="mt-3 sm:mt-6 text-sm sm:text-xl md:text-2xl text-slate-600 font-sans font-light max-w-2xl mx-auto leading-relaxed px-2">
+          To my favorite bignose gundu, laugh-sharing, awesome friend — today is all about celebrating you! 🌿✨
         </p>
 
         {/* Quick Action Buttons */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
           <motion.button
             onClick={onScrollToGallery}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3.5 rounded-full bg-slate-900 text-white font-medium shadow-md hover:bg-slate-800 transition-colors flex items-center gap-2 text-sm md:text-base"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-slate-900 text-white font-medium shadow-md hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <Camera size={18} className="text-amber-400" />
+            <Camera size={16} className="text-amber-400 sm:w-[18px] sm:h-[18px]" />
             Explore 3D Snapshots
           </motion.button>
 
@@ -327,9 +330,9 @@ const Hero3D = ({ onScrollToWish, onScrollToGallery }) => {
             onClick={onScrollToWish}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3.5 rounded-full bg-emerald-600 text-white font-medium shadow-md hover:bg-emerald-700 transition-colors flex items-center gap-2 text-sm md:text-base"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-emerald-600 text-white font-medium shadow-md hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
           >
-            <Gift size={18} className="text-amber-300" />
+            <Gift size={16} className="text-amber-300 sm:w-[18px] sm:h-[18px]" />
             Open Birthday Wish 🎁
           </motion.button>
         </div>
@@ -360,28 +363,28 @@ const Hero3D = ({ onScrollToWish, onScrollToGallery }) => {
 // =========================================================================
 const SpatialGallery3D = ({ onSelectPhoto }) => {
   return (
-    <section id="gallery-section" className="py-28 px-4 sm:px-8 max-w-7xl mx-auto relative">
-      <div className="text-center mb-16">
+    <section id="gallery-section" className="py-10 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto relative">
+      <div className="text-center mb-8 sm:mb-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs uppercase tracking-widest font-semibold mb-4"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] sm:text-xs uppercase tracking-widest font-semibold mb-3 sm:mb-4"
         >
-          <Camera size={14} />
+          <Camera size={13} />
           Interactive 3D Perspective
         </motion.div>
 
-        <h2 className="text-4xl sm:text-6xl font-cursive font-bold text-slate-800 drop-shadow-sm">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-cursive font-bold text-slate-800 drop-shadow-sm">
           Snapshots & Serenity ✨
         </h2>
-        <p className="text-slate-500 font-sans text-sm sm:text-base mt-2 max-w-lg mx-auto">
+        <p className="text-slate-500 font-sans text-xs sm:text-base mt-2 max-w-lg mx-auto px-2">
           Hover or touch the cards to experience real-time 3D tilt. Tap any memory to expand into full view.
         </p>
       </div>
 
       {/* 3D Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         {PHOTOS.map((photo) => (
           <TiltCard3D key={photo.id} photo={photo} onSelect={onSelectPhoto} />
         ))}
@@ -394,51 +397,140 @@ const SpatialGallery3D = ({ onSelectPhoto }) => {
 // FRIENDSHIP BENTO & GUNDU CHRONICLES (FEAT. GROUP SELFIE)
 // =========================================================================
 const FriendshipBento = ({ onSelectPhoto }) => {
+  const [activeSnapshotIdx, setActiveSnapshotIdx] = useState(0);
+  const currentSnapshot = FRIENDSHIP_SNAPSHOTS[activeSnapshotIdx];
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setActiveSnapshotIdx((prev) => (prev === 0 ? FRIENDSHIP_SNAPSHOTS.length - 1 : prev - 1));
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setActiveSnapshotIdx((prev) => (prev === FRIENDSHIP_SNAPSHOTS.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <section className="py-24 px-4 sm:px-8 max-w-7xl mx-auto relative">
-      <div className="text-center mb-16">
+    <section className="py-10 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto relative">
+      <div className="text-center mb-8 sm:mb-14">
         <span className="text-xs uppercase font-bold tracking-[0.25em] text-emerald-700 bg-emerald-50 px-4 py-1.5 rounded-full border border-emerald-200">
           The Friendship Dossier
         </span>
-        <h2 className="text-4xl sm:text-6xl font-cursive font-bold text-slate-800 mt-4">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-cursive font-bold text-slate-800 mt-3 sm:mt-4">
           The "{PET_NAME}" Chronicles 📖
         </h2>
-        <p className="text-slate-500 text-sm sm:text-base mt-2">
+        <p className="text-slate-500 text-xs sm:text-base mt-2 px-2">
           Documenting the true highlights of having you as an awesome friend.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        {/* Large Featured Card: The Squad / VIP Friendship Selfie */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch">
+        {/* Large Featured Card: The Squad / VIP Friendship Snapshot Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          onClick={() => onSelectPhoto(GROUP_PHOTO)}
-          className="lg:col-span-7 bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white shadow-3d-soft hover:shadow-3d-elevated transition-all cursor-pointer group flex flex-col justify-between"
+          className="lg:col-span-7 bg-white/80 backdrop-blur-md rounded-3xl p-4 sm:p-7 md:p-8 border border-white shadow-3d-soft hover:shadow-3d-elevated transition-all flex flex-col justify-between"
         >
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300/60">
-                <Sparkles size={13} className="text-amber-600" />
-                {GROUP_PHOTO.badge}
-              </span>
-              <span className="text-xs text-slate-400 font-medium">Click to inspect</span>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300/60">
+                  <Sparkles size={13} className="text-amber-600" />
+                  {currentSnapshot.badge}
+                </span>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                  {activeSnapshotIdx + 1} of {FRIENDSHIP_SNAPSHOTS.length}
+                </span>
+              </div>
+              <span className="text-xs text-slate-400 font-medium">Click photo to enlarge</span>
             </div>
 
-            <div className="overflow-hidden rounded-2xl relative shadow-inner bg-stone-900 aspect-[16/9]">
+            <div
+              className="overflow-hidden rounded-2xl relative shadow-inner bg-stone-950 aspect-[4/3] sm:aspect-[16/9] cursor-pointer group/photo select-none"
+              onClick={() => onSelectPhoto(currentSnapshot)}
+            >
+              {/* Blurred backdrop glow for portrait and landscape seamless display */}
               <img
-                src={GROUP_PHOTO.url}
-                alt={GROUP_PHOTO.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                key={`bg-${currentSnapshot.id}`}
+                src={currentSnapshot.url}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125 pointer-events-none transition-opacity duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-lg sm:text-xl font-bold">{GROUP_PHOTO.title}</span>
+
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentSnapshot.id}
+                  src={currentSnapshot.url}
+                  alt={currentSnapshot.title}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative w-full h-full object-contain transition-transform duration-700 group-hover/photo:scale-[1.03]"
+                />
+              </AnimatePresence>
+
+              {/* Gradient scrim with text overlay */}
+              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white pointer-events-none">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/80 text-white">
+                    {currentSnapshot.tag}
+                  </span>
+                </div>
+                <span className="text-lg sm:text-xl font-bold block">{currentSnapshot.title}</span>
                 <p className="text-xs sm:text-sm text-stone-200 font-light mt-0.5">
-                  {GROUP_PHOTO.subtitle}
+                  {currentSnapshot.subtitle}
                 </p>
               </div>
+
+              {/* Left Arrow Button */}
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous snapshot"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 shadow-lg z-10"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              {/* Right Arrow Button */}
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next snapshot"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 transition-all opacity-80 hover:opacity-100 hover:scale-110 shadow-lg z-10"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Interactive Thumbnail Previews */}
+            <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+              {FRIENDSHIP_SNAPSHOTS.map((snap, idx) => (
+                <button
+                  key={snap.id}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSnapshotIdx(idx);
+                  }}
+                  className={`relative rounded-xl overflow-hidden aspect-[16/10] border-2 transition-all group/thumb ${
+                    activeSnapshotIdx === idx
+                      ? 'border-emerald-600 ring-2 ring-emerald-400/50 shadow-md scale-[1.02]'
+                      : 'border-slate-200 hover:border-slate-400 opacity-65 hover:opacity-100'
+                  }`}
+                >
+                  <img src={snap.url} alt={snap.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/20 group-hover/thumb:bg-transparent transition-colors" />
+                  <span className="absolute bottom-1 right-1 text-[10px] font-bold bg-black/70 text-white px-1.5 py-0.5 rounded">
+                    #{idx + 1}
+                  </span>
+                  <span className="absolute bottom-1 left-1 text-[9px] font-medium text-white truncate max-w-[65%] hidden sm:inline px-1">
+                    {snap.tag}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
 
@@ -446,12 +538,12 @@ const FriendshipBento = ({ onSelectPhoto }) => {
             <span className="flex items-center gap-2 text-emerald-700 font-medium">
               <CheckCircle2 size={16} /> Authentic laughter certified
             </span>
-            <span className="text-slate-400">Squad approved</span>
+            <span className="text-slate-400">Squad approved • 3 snapshots</span>
           </div>
         </motion.div>
 
         {/* Highlight Stats Bento Grid */}
-        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5 sm:gap-4">
           {FRIENDSHIP_HIGHLIGHTS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -459,7 +551,7 @@ const FriendshipBento = ({ onSelectPhoto }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white/80 backdrop-blur-md rounded-2xl p-5 border border-white shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+              className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
             >
               <div>
                 <span className="text-2xl font-bold text-emerald-700 font-sans block mb-1">
@@ -521,15 +613,15 @@ const GiftBoxWish3D = () => {
   };
 
   return (
-    <section id="wish-section" className="py-32 px-4 sm:px-8 bg-gradient-to-t from-emerald-100/50 via-warm-cream to-white relative overflow-hidden">
-      <div className="max-w-4xl mx-auto text-center mb-14">
+    <section id="wish-section" className="py-10 sm:py-20 px-4 sm:px-8 bg-gradient-to-t from-emerald-100/50 via-warm-cream to-white relative overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
         <span className="text-xs uppercase font-bold tracking-[0.25em] text-amber-700 bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
           Birthday Delivery
         </span>
-        <h2 className="text-5xl sm:text-7xl font-cursive font-bold text-slate-800 mt-4">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-cursive font-bold text-slate-800 mt-3 sm:mt-4 leading-tight">
           A Special Surprise for {PET_NAME} 🎁
         </h2>
-        <p className="text-slate-500 text-sm sm:text-base mt-2">
+        <p className="text-slate-500 text-xs sm:text-base mt-2 px-2">
           {isOpen ? "Your wish scroll is unlocked!" : "Tap the 3D gift box to unwrap your birthday wish."}
         </p>
       </div>
@@ -542,25 +634,25 @@ const GiftBoxWish3D = () => {
             onClick={handleOpenGift}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="cursor-pointer perspective-1000 flex flex-col items-center group py-8"
+            className="cursor-pointer perspective-1000 flex flex-col items-center group py-4 sm:py-8"
           >
             {/* 3D Gift Box Structure */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 preserve-3d">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 preserve-3d">
               {/* Box Glow */}
               <div className="absolute inset-0 bg-amber-300/40 rounded-full blur-2xl group-hover:bg-amber-300/60 transition-colors" />
 
               {/* Box Body */}
-              <div className="absolute bottom-0 w-full h-48 bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-600 rounded-3xl shadow-3d-elevated border-2 border-emerald-400/40 flex items-center justify-center">
+              <div className="absolute bottom-0 w-full h-40 sm:h-48 bg-gradient-to-tr from-emerald-700 via-emerald-600 to-teal-600 rounded-3xl shadow-3d-elevated border-2 border-emerald-400/40 flex items-center justify-center">
                 {/* Golden Ribbon Vertical */}
-                <div className="absolute top-0 bottom-0 w-10 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 shadow-sm" />
+                <div className="absolute top-0 bottom-0 w-8 sm:w-10 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 shadow-sm" />
                 {/* Golden Ribbon Horizontal */}
-                <div className="absolute left-0 right-0 h-10 bg-gradient-to-b from-amber-400 via-amber-300 to-amber-500 shadow-sm" />
+                <div className="absolute left-0 right-0 h-8 sm:h-10 bg-gradient-to-b from-amber-400 via-amber-300 to-amber-500 shadow-sm" />
 
                 <div className="z-10 text-white font-semibold text-center px-4">
-                  <span className="text-xs uppercase tracking-widest text-emerald-100 block mb-1">
+                  <span className="text-[10px] sm:text-xs uppercase tracking-widest text-emerald-100 block mb-0.5 sm:mb-1">
                     Special Delivery
                   </span>
-                  <p className="text-base font-bold text-amber-100">
+                  <p className="text-sm sm:text-base font-bold text-amber-100">
                     To: {FRIEND_NAME} ({PET_NAME})
                   </p>
                 </div>
@@ -570,16 +662,16 @@ const GiftBoxWish3D = () => {
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-                className="absolute top-8 -left-2 -right-2 h-16 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 rounded-2xl shadow-lg border border-emerald-300/50 flex items-center justify-center z-20"
+                className="absolute top-6 sm:top-8 -left-2 -right-2 h-14 sm:h-16 bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 rounded-2xl shadow-lg border border-emerald-300/50 flex items-center justify-center z-20"
               >
                 {/* Ribbon across lid */}
-                <div className="absolute top-0 bottom-0 w-10 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500" />
+                <div className="absolute top-0 bottom-0 w-8 sm:w-10 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500" />
                 
                 {/* Bow on Top */}
-                <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <div className="w-12 h-10 bg-amber-400 rounded-full border-2 border-amber-300 shadow-md rotate-[-25deg]" />
-                  <div className="w-12 h-10 bg-amber-400 rounded-full border-2 border-amber-300 shadow-md rotate-[25deg] -ml-6" />
-                  <div className="absolute w-5 h-5 bg-amber-300 rounded-full shadow-inner border border-amber-400" />
+                <div className="absolute -top-6 sm:-top-7 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                  <div className="w-10 h-8 sm:w-12 sm:h-10 bg-amber-400 rounded-full border-2 border-amber-300 shadow-md rotate-[-25deg]" />
+                  <div className="w-10 h-8 sm:w-12 sm:h-10 bg-amber-400 rounded-full border-2 border-amber-300 shadow-md rotate-[25deg] -ml-5 sm:-ml-6" />
+                  <div className="absolute w-4 h-4 sm:w-5 sm:h-5 bg-amber-300 rounded-full shadow-inner border border-amber-400" />
                 </div>
               </motion.div>
             </div>
@@ -587,9 +679,9 @@ const GiftBoxWish3D = () => {
             <motion.div
               animate={{ scale: [1, 1.08, 1] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="mt-6 px-6 py-2.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-md flex items-center gap-2 group-hover:bg-emerald-700 transition-colors"
+              className="mt-5 sm:mt-6 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-md flex items-center gap-2 group-hover:bg-emerald-700 transition-colors"
             >
-              <Sparkles size={16} className="text-amber-400" />
+              <Sparkles size={14} className="text-amber-400 sm:w-4 sm:h-4" />
               Tap to Unwrap
             </motion.div>
           </motion.div>
@@ -599,16 +691,16 @@ const GiftBoxWish3D = () => {
             initial={{ opacity: 0, scale: 0.85, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
-            className="w-full bg-white/95 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 shadow-3d-elevated border border-emerald-100 text-left relative"
+            className="w-full bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl p-5 sm:p-10 md:p-12 shadow-3d-elevated border border-emerald-100 text-left relative"
           >
             {/* Top Badge */}
-            <div className="flex items-center justify-between pb-6 border-b border-slate-100 mb-8">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+            <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-slate-100 mb-5 sm:mb-8">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
                   🎉
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-800">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800">
                     {BIRTHDAY_WISH.title}
                   </h3>
                   <span className="text-xs text-slate-400 font-medium">
@@ -628,19 +720,19 @@ const GiftBoxWish3D = () => {
             </div>
 
             {/* Paragraphs */}
-            <div className="space-y-5 text-slate-700 text-base sm:text-lg leading-relaxed font-sans font-light">
+            <div className="space-y-4 sm:space-y-5 text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed font-sans font-light">
               {BIRTHDAY_WISH.paragraphs.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
             </div>
 
             {/* Closing & Sign-off */}
-            <div className="mt-10 pt-8 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <span className="text-emerald-700 font-medium text-base">
+            <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+              <span className="text-emerald-700 font-medium text-sm sm:text-base">
                 {BIRTHDAY_WISH.closing}
               </span>
-              <div className="text-right">
-                <span className="font-cursive text-3xl sm:text-4xl text-amber-700 font-bold block drop-shadow-sm">
+              <div className="text-left sm:text-right">
+                <span className="font-cursive text-2xl sm:text-4xl text-amber-700 font-bold block drop-shadow-sm">
                   {BIRTHDAY_WISH.signOff} ✌️
                 </span>
               </div>
@@ -768,14 +860,14 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100]">
       <audio ref={audioRef} src={`${import.meta.env.BASE_URL}music.mp3`} loop autoPlay />
       <motion.button
         onClick={togglePlay}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
         title={isPlaying ? "Pause music" : "Play music"}
-        className={`w-14 h-14 rounded-full flex items-center justify-center shadow-3d-elevated backdrop-blur-md transition-all ${
+        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-3d-elevated backdrop-blur-md transition-all ${
           isPlaying
             ? 'bg-emerald-600 text-white shadow-emerald-500/30'
             : 'bg-white/90 text-slate-700 border border-slate-200 shadow-sm'
@@ -785,13 +877,13 @@ const MusicPlayer = () => {
           animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
           transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
         >
-          <Disc size={26} />
+          <Disc size={22} className="sm:w-[26px] sm:h-[26px]" />
         </motion.div>
 
         {isPlaying && (
           <motion.div
-            className="absolute -top-2 -left-2 text-amber-500 font-bold"
-            animate={{ y: [-5, -20], opacity: [1, 0] }}
+            className="absolute -top-1.5 -left-1.5 text-amber-500 font-bold text-xs sm:text-base"
+            animate={{ y: [-4, -16], opacity: [1, 0] }}
             transition={{ repeat: Infinity, duration: 1.6 }}
           >
             ♪
@@ -806,12 +898,12 @@ const MusicPlayer = () => {
 // FOOTER
 // =========================================================================
 const Footer = () => (
-  <footer className="py-12 text-center bg-slate-900 text-slate-300">
+  <footer className="py-8 sm:py-12 text-center bg-slate-900 text-slate-300">
     <div className="max-w-md mx-auto px-4">
-      <p className="text-base font-sans font-light flex items-center justify-center gap-2">
-        Crafted with <Star size={16} className="text-amber-400" fill="currentColor" /> {SIGN_OFF}
+      <p className="text-sm sm:text-base font-sans font-light flex items-center justify-center gap-2">
+        Crafted with <Star size={15} className="text-amber-400" fill="currentColor" /> {SIGN_OFF}
       </p>
-      <span className="text-xs text-slate-500 uppercase tracking-widest block mt-2">
+      <span className="text-[11px] sm:text-xs text-slate-500 uppercase tracking-widest block mt-2">
         Dedicated to {FRIEND_NAME} ({PET_NAME}) • {new Date().getFullYear()}
       </span>
     </div>
